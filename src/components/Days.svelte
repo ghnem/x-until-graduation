@@ -31,7 +31,7 @@
         class={`${
           totalNumberOfDays.length - i <= remainingDays ? "not-yet" : ""
         } ${i % 40 == 0 || (i - 1) % 40 == 0 ? "left" : ""} ${
-          (i + 1) % 40 === 0 ? "right" : ""
+          (i + 1) % 40 === 0 || (i + 2) % 40 === 0? "right" : ""
         }`}
       />
     {/each}
