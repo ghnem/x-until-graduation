@@ -1,20 +1,24 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { firstDay, lastDay } from "../constants";
 
-  const today = new Date().getTime();
+  export let alreadyGradudated: boolean = false;
+  export let progress = 0;
 
-  export const alreadyGradudated = today > lastDay;
-  export const progress = alreadyGradudated
-    ? 100
-    : (1 - ((lastDay - today) / (lastDay - firstDay))) * 100;
-
+  onMount(() => {
+    const today = new Date().getTime();
+    alreadyGradudated = today > lastDay;
+    progress = alreadyGradudated
+      ? 100
+      : (1 - (lastDay - today) / (lastDay - firstDay)) * 100;
+  });
 </script>
 
 <section>
   {#if alreadyGradudated}
-  <h2>Already Graduated 🥳</h2>
+    <h2>Already Graduated 🥳</h2>
   {:else}
-  <h2>{progress.toFixed(2)}% has passed!</h2>
+    <h2>{progress.toFixed(2)}% has passed!</h2>
   {/if}
   <div class="meter">
     <span style="width: {progress}%" />
@@ -23,8 +27,8 @@
 
 <style>
   h2 {
-		color: #67b821;
-	}
+    color: #67b821;
+  }
 
   .meter {
     box-sizing: content-box;
