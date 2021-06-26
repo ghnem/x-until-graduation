@@ -1,0 +1,91 @@
+<script lang="ts">
+  import { firstDay, lastDay } from "../constants";
+
+  const today = new Date().getTime();
+
+  export const alreadyGradudated = today > lastDay;
+  export const progress = alreadyGradudated
+    ? 100
+    : (1 - ((lastDay - today) / (lastDay - firstDay))) * 100;
+
+</script>
+
+<section>
+  {#if alreadyGradudated}
+  <h2>Already Graduated 🥳</h2>
+  {:else}
+  <h2>{progress.toFixed(2)}% has passed!</h2>
+  {/if}
+  <div class="meter">
+    <span style="width: {progress}%" />
+  </div>
+</section>
+
+<style>
+  h2 {
+		color: #67b821;
+	}
+
+  .meter {
+    box-sizing: content-box;
+    height: 20px;
+    position: relative;
+    background: #8ec9fd;
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  }
+  .meter > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #67b821;
+    background-image: linear-gradient(
+      center bottom,
+      rgb(43, 194, 83) 37%,
+      rgb(92, 236, 92) 69%
+    );
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  .meter > span:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent
+    );
+    z-index: 1;
+    background-size: 50px 50px;
+    animation: move 2s linear infinite;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+  }
+
+  @keyframes move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+</style>

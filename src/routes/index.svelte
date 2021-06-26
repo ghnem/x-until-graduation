@@ -1,11 +1,13 @@
 <script lang="ts">
-	import Footer from '../components/Footer.svelte';
     import Days from '../components/Days.svelte';
+	import Footer from '../components/Footer.svelte';
+    import PorgressBar from '../components/Progress.svelte'
     import Weeks from '../components/Weeks.svelte'
 </script>
 
 <main>
 	<h1>X Until Graduation</h1>
+    <PorgressBar />
     <Days />
     <Weeks />
 </main>
