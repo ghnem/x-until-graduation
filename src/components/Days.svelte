@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { range } from '../utlls';
-	import { firstDay, lastDay, MILLISECONDS_TO_DAYS } from '../constants';
+	import { firstDay, lastDay, MILLISECONDS_IN_DAY } from '../constants';
 
 	const today = new Date().getTime();
-	export const totalNumberOfDays = range((lastDay - firstDay) / MILLISECONDS_TO_DAYS);
-	export let remainingDays = Math.floor((lastDay - today) / MILLISECONDS_TO_DAYS);
+	export const totalNumberOfDays = range((lastDay - firstDay) / MILLISECONDS_IN_DAY);
+	export let remainingDays = Math.floor((lastDay - today) / MILLISECONDS_IN_DAY);
 	export const alreadyGradudated = remainingDays < 0;
 	remainingDays = alreadyGradudated ? 0 : remainingDays;
 </script>
