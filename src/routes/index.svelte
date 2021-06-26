@@ -38,6 +38,7 @@
 </head>
 <main>
   <h1>X Until Graduation</h1>
+  <p>{description} 🏃‍♂️</p>
   <PorgressBar />
   <Days />
   <Weeks />
@@ -49,6 +50,10 @@
     margin: auto;
     width: 1000px;
     max-width: 800px;
+  }
+
+  p {
+    font-size: 18px;
   }
   @media(max-width: 800px) {
     main {

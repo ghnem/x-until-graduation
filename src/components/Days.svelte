@@ -43,7 +43,7 @@
     padding-bottom: 1rem;
   }
   h2 {
-    color: #67b821;
+    color: black;
   }
 
   #days-grid {
@@ -57,7 +57,7 @@
   #days-grid > div {
     height: 1rem;
     width: 1rem;
-    background-color: black;
+    background-color: #67b821;
   }
 
   @media (max-width: 800px) {
@@ -77,6 +77,6 @@
   }
 
   #days-grid > div.not-yet {
-    background-color: #67b821;
+    background-color: black;
   }
 </style>
