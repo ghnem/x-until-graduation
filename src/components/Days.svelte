@@ -5,8 +5,8 @@
   import { firstDay, lastDay, MILLISECONDS_IN_DAY } from "../constants";
 
   export const totalNumberOfDays = range((lastDay - firstDay) / MILLISECONDS_IN_DAY);
-  export let remainingDays: number = 0;
-  export let alreadyGradudated: boolean = false;
+  export let remainingDays = 0;
+  export let alreadyGradudated = false;
   
   onMount(() => {
 	const today = new Date().getTime();

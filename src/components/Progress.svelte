@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { firstDay, lastDay } from "../constants";
 
-  export let alreadyGradudated: boolean = false;
+  export let alreadyGradudated = false;
   export let progress = 0;
 
   onMount(() => {
