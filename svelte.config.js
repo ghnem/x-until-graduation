@@ -9,12 +9,11 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter({
-			pages: './build',
-			assets: './build',
-			fallback: null,
-		}),
-		// hydrate the <div id="svelte"> element in src/app.html
+		adapter: adapter(),
+		paths: {
+			base: '/x-until-graduation',
+			assets: '/x-until-graduation'
+		},
 		target: '#svelte',
 		
 	}
