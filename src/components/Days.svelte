@@ -4,12 +4,14 @@
   import { range } from "../utlls";
   import { firstDay, lastDay, MILLISECONDS_IN_DAY } from "../constants";
 
-  export const totalNumberOfDays = range((lastDay - firstDay) / MILLISECONDS_IN_DAY);
+  export const totalNumberOfDays = range(
+    (lastDay - firstDay) / MILLISECONDS_IN_DAY
+  ).map((day) => new Date(firstDay + day * MILLISECONDS_IN_DAY).toDateString());
   export let remainingDays = 0;
   export let alreadyGradudated = false;
-  
+
   onMount(() => {
-	const today = new Date().getTime();
+    const today = new Date().getTime();
     remainingDays = Math.floor((lastDay - today) / MILLISECONDS_IN_DAY);
     alreadyGradudated = remainingDays < 0;
     remainingDays = alreadyGradudated ? 0 : remainingDays;
@@ -23,9 +25,12 @@
     <h2>X = Days = {remainingDays}</h2>
   {/if}
   <div id="days-grid">
-    {#each totalNumberOfDays as _, i}
+    {#each totalNumberOfDays as date, i}
       <div
-        class={totalNumberOfDays.length - i <= remainingDays ? "not-yet" : ""}
+        data-tooltip={date}
+        class={`${
+          totalNumberOfDays.length - i <= remainingDays ? "not-yet" : ""
+        } ${i % 40 == 0 ? "left" : ""} ${(i + 1) % 40 === 0 ? "right" : ""}`}
       />
     {/each}
   </div>
@@ -51,6 +56,10 @@
     height: 1rem;
     width: 1rem;
     background-color: black;
+  }
+
+  #days-grid > div:hover {
+	  cursor: pointer;
   }
 
   #days-grid > div.not-yet {
