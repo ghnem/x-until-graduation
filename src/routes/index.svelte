@@ -46,9 +46,14 @@
 
 <style>
   main {
-    max-width: 800px;
     margin: auto;
-    min-height: 100vh;
+    width: 1000px;
+    max-width: 800px;
+  }
+  @media(max-width: 800px) {
+    main {
+      width: 300px;
+    }
   }
   h1 {
     color: #4facfe;

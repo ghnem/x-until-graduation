@@ -55,6 +55,19 @@
     background-color: black;
   }
 
+  @media (max-width: 800px) {
+    #weeks-grid {
+      grid-row-gap: 0.3rem;
+      row-gap: 0.3rem;
+      grid-template-columns: repeat(30, 0.5rem);
+    }
+
+    #weeks-grid > div {
+      height: 0.5rem;
+      width: 0.5rem;
+    }
+  }
+
   #weeks-grid > div.not-yet {
     background-color: #67b821;
   }

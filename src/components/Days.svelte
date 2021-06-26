@@ -30,7 +30,9 @@
         data-tooltip={date}
         class={`${
           totalNumberOfDays.length - i <= remainingDays ? "not-yet" : ""
-        } ${i % 40 == 0 || (i - 1) % 40 == 0? "left" : ""} ${(i + 1) % 40 === 0 ? "right" : ""}`}
+        } ${i % 40 == 0 || (i - 1) % 40 == 0 ? "left" : ""} ${
+          (i + 1) % 40 === 0 ? "right" : ""
+        }`}
       />
     {/each}
   </div>
@@ -58,8 +60,20 @@
     background-color: black;
   }
 
+  @media (max-width: 800px) {
+    #days-grid {
+      grid-row-gap: 0.3rem;
+      row-gap: 0.3rem;
+      grid-template-columns: repeat(30, 0.5rem);
+    }
+
+    #days-grid > div {
+      height: 0.5rem;
+      width: 0.5rem;
+    }
+  }
   #days-grid > div:hover {
-	  cursor: pointer;
+    cursor: pointer;
   }
 
   #days-grid > div.not-yet {
