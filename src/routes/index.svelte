@@ -5,7 +5,7 @@
   import Weeks from "../components/Weeks.svelte";
 
   export const title = 'X Until Graduation'
-  export const description = 'The number of days, weeks, and minutes until the 2022 class of CSE Minya University graduate.'
+  export const description = 'The number of days, and weeks until the 2022 class of CSE Minya University graduate.'
   export const altDescription = 'Graduation hat on top of books'
   export const url = 'https://demos.abdulrhmnghanem.tech/x-until-graduation/'
 </script>
