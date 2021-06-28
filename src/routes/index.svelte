@@ -8,6 +8,7 @@
   export const description = 'The number of days, and weeks until the 2022 class of CSE Minya University graduate.'
   export const altDescription = 'Graduation hat on top of books'
   export const url = 'https://demos.abdulrhmnghanem.tech/x-until-graduation/'
+  export const img = '/x-until-graduation/education.png'
 </script>
 
 
@@ -19,7 +20,7 @@
     <meta property="og:url" content="{url}" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="{description}" />
-    <meta property="og:image" content="/education.png" />
+    <meta property="og:image" content="{img}" />
     <meta property="og:image:alt" content="{altDescription}" />
 
   <!-- Twitter -->
@@ -29,7 +30,7 @@
   <meta property="twitter:description" content="{description}" />
   <meta
     property="twitter:image"
-    content="/education.png"
+    content="{img}"
   />
   <meta
     property="twitter:image:alt"
