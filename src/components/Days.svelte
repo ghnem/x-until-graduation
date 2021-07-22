@@ -30,8 +30,8 @@
         data-tooltip={date}
         class={`${
           totalNumberOfDays.length - i <= remainingDays ? "not-yet" : ""
-        } ${i % 40 == 0 || (i - 1) % 40 == 0 ? "left" : ""} ${
-          (i + 1) % 40 === 0 || (i + 2) % 40 === 0? "right" : ""
+        } ${i % 30 == 0 || (i - 1) % 30 == 0 ? "left" : ""} ${
+          (i + 1) % 30 === 0 || (i + 2) % 30 === 0 ? "right" : ""
         }`}
       />
     {/each}
@@ -49,15 +49,16 @@
   #days-grid {
     display: grid;
     justify-content: space-between;
-    grid-row-gap: 0.1rem;
-    row-gap: 0.1rem;
-    grid-template-columns: repeat(40, 1rem);
+    grid-row-gap: 0.4rem;
+    row-gap: 0.4rem;
+    grid-template-columns: repeat(30, 1rem);
   }
 
   #days-grid > div {
     height: 1rem;
     width: 1rem;
     background-color: #67b821;
+    border-radius: 20%;
   }
 
   @media (max-width: 800px) {
