@@ -30,6 +30,12 @@
     color: #67b821;
   }
 
+  @media (min-width: 800px) {
+    section {
+      padding: 0 2rem;
+    }
+  }
+
   .meter {
     box-sizing: content-box;
     height: 20px;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { range } from "../utlls";
+  import { range, getWeekRange } from "../utlls";
   import { firstDay, lastDay, MILLISECONDS_IN_WEEK } from "../constants";
 
   export const totalNumberOfWeeks = range(
@@ -27,7 +27,25 @@
   <div id="weeks-grid">
     {#each totalNumberOfWeeks as _, i}
       <div
-        class={totalNumberOfWeeks.length - i <= remainingWeeks ? "not-yet" : ""}
+        data-tooltip={getWeekRange(firstDay, i)}
+        class={`${
+          totalNumberOfWeeks.length - i <= remainingWeeks ? "not-yet" : ""
+        } ${
+          i % 30 == 0 ||
+          (i - 1) % 30 === 0 ||
+          (i - 2) % 30 === 0 ||
+          (i - 3) % 30 === 0 ||
+          (i - 4) % 30 === 0
+            ? "left"
+            : ""
+        } ${
+          (i + 1) % 30 === 0 ||
+          (i + 2) % 30 === 0 ||
+          (i + 3) % 30 === 0 ||
+          (i + 4) % 30 === 0
+            ? "right"
+            : ""
+        }`}
       />
     {/each}
   </div>
@@ -44,18 +62,32 @@
   #weeks-grid {
     display: grid;
     justify-content: space-between;
-    grid-row-gap: 0.1rem;
-    row-gap: 0.1rem;
-    grid-template-columns: repeat(40, 1rem);
+    grid-row-gap: 0.4rem;
+    row-gap: 0.4rem;
+    grid-template-columns: repeat(30, 1rem);
   }
 
   #weeks-grid > div {
     height: 1rem;
     width: 1rem;
     background-color: #67b821;
+    border-radius: 20%;
   }
 
+  @media (min-width: 800px) {
+    h2 {
+      padding-left: 2rem;
+      padding-top: 2rem;
+    }
+    #weeks-grid {
+      padding: 2rem;
+      padding-top: 0;
+    }
+  }
   @media (max-width: 800px) {
+    h2 {
+      padding-top: 2rem;
+    }
     #weeks-grid {
       grid-row-gap: 0.3rem;
       row-gap: 0.3rem;
@@ -66,6 +98,10 @@
       height: 0.5rem;
       width: 0.5rem;
     }
+  }
+
+  #weeks-grid > div:hover {
+    cursor: pointer;
   }
 
   #weeks-grid > div.not-yet {
